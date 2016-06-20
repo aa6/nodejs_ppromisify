@@ -1,0 +1,38 @@
+{
+    "name": "ppromisify",
+    "version": "0.0.1",
+    "description": "Promise wrapper based on native promises",
+    "keywords":
+    [
+        "promise",
+        "wrapper"
+    ],
+    "homepage": "https://github.com/aa6/ppromisify",
+    "bugs": 
+    {
+        "url": "https://github.com/aa6/ppromisify/issues",
+        "email": "justsunshineandbluesky@gmail.com"
+    },
+    "licenses":
+    [
+        {
+            "type": "AGPLv3",
+            "url": "http://www.gnu.org/licenses/agpl-3.0.html"
+        }
+    ],
+    "author": "aa6 <justsunshineandbluesky@gmail.com>",
+    "main": "./ppromisify.js",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/aa6/ppromisify.git"
+    },
+    "optionalPeerDependencies":
+    {
+        "jsftp": "*"
+    },
+    "engines":
+    {
+        "node": ">=5.0.0"
+    }
+}
