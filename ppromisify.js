@@ -1,6 +1,6 @@
 var ppromisify = module.exports = function(origin, scheme, parent_origin)
 {
-    var handler = { members_to_call: {}, gettable_properties: {}, settable_properties: {}, own_propreties: {} }
+    var handler = { members_to_call: {}, gettable_properties: {}, settable_properties: {}, own_properties: {} }
     var wrapper = new Proxy(origin, handler)
     for(var key in scheme)
     {
@@ -13,13 +13,13 @@ var ppromisify = module.exports = function(origin, scheme, parent_origin)
                     return handler.apply_function(args)
                 }
                 break
-            case scheme[key] == ppromisify.readonly_property:
+            case scheme[key] === ppromisify.readonly_property:
                 handler.gettable_properties[key] = true
                 break
-            case scheme[key] == ppromisify.writeonly_property:
+            case scheme[key] === ppromisify.writeonly_property:
                 handler.settable_properties[key] = true
                 break
-            case scheme[key] == ppromisify.readwrite_property:
+            case scheme[key] === ppromisify.readwrite_property:
                 handler.gettable_properties[key] = true
                 handler.settable_properties[key] = true
                 break
@@ -29,9 +29,9 @@ var ppromisify = module.exports = function(origin, scheme, parent_origin)
     }
     handler.get = function(target, name) 
     {
-        if(typeof this.own_propreties[name] != "undefined")
+        if(typeof this.own_properties[name] != "undefined")
         {
-            return this.own_propreties[name]
+            return this.own_properties[name]
         }
         if(typeof this.gettable_properties[name] != "undefined")
         {
@@ -53,7 +53,7 @@ var ppromisify = module.exports = function(origin, scheme, parent_origin)
                 members_to_call[name] = value
                 break
             default:
-                this.own_propreties[name] = value
+                this.own_properties[name] = value
         }
         return true
     }
