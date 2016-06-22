@@ -10,7 +10,11 @@ var ppromisify = module.exports = function(origin, scheme, parent_origin)
                 handler.apply_function = scheme[key](origin, parent_origin)
                 handler.apply = function(target, this_arg, args)
                 {
-                    return handler.apply_function(args)
+                    return handler.apply_function.apply(parent_origin,args)
+                }
+                handler.construct = function(target, args, new_target)
+                {
+                    return handler.apply_function.apply(parent_origin,args)
                 }
                 break
             case scheme[key] === ppromisify.readonly_property:
@@ -84,11 +88,10 @@ ppromisify.constructor_return_value = function(scheme)
     {
         return function()
         {
-            var result = ppromisify(
+            return ppromisify(
                 new (Function.prototype.bind.apply(target_property, [null].concat(Array.prototype.slice.call(arguments)))),
                 scheme
             )
-            return result
         }
     }
 }
