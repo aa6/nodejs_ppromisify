@@ -7,7 +7,7 @@ var ppromisify = module.exports = function(origin, scheme, parent_origin)
         switch(true)
         {
             case key == "<call>":
-                handler.apply_function = scheme[key](origin,parent_origin)
+                handler.apply_function = scheme[key](origin, parent_origin)
                 handler.apply = function(target, this_arg, args)
                 {
                     return handler.apply_function(args)
