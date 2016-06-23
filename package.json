@@ -1,6 +1,6 @@
 {
     "name": "ppromisify",
-    "version": "0.0.6",
+    "version": "0.1.6",
     "description": "Promise wrapper based on native promises",
     "keywords":
     [
@@ -29,7 +29,8 @@
     },
     "optionalPeerDependencies":
     {
-        "jsftp": "*"
+        "jsftp": "*",
+        "request": "*"
     },
     "engines":
     {
