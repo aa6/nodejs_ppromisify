@@ -119,7 +119,7 @@ ppromisify.callback_err_res = function(target_property, origin)
                 if(already_called == null)
                 {
                     already_called = true
-                    if(err != null)
+                    if(err)
                     {
                         reject(err)
                     }
