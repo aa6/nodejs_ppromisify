@@ -1,6 +1,6 @@
 {
     "name": "ppromisify",
-    "version": "0.1.6",
+    "version": "0.2.0",
     "description": "Promise wrapper based on native promises",
     "keywords":
     [
